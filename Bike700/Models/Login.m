@@ -36,8 +36,8 @@
                               @"appVersion":@"2.1",
                               @"countryCode":@"86",
                               @"device":@"iPhone",
-                              @"password":@"d8578edf8458ce06fbc5bb76a58c",
-//                              @"password":@"d8578edf8458ce06fbc5bb76a58c5ca4",
+//                              @"password":@"d8578edf8458ce06fbc5bb76a58c",
+                              @"password":@"d8578edf8458ce06fbc5bb76a58c5ca4",
                               @"phone":@"18720987504",
                               @"system":@"ios",
                               @"systemVersion":@"9.3.3"

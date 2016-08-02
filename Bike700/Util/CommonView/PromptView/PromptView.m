@@ -11,7 +11,7 @@
 
 @interface PromptView ()
 
-@property (nonatomic,weak)UILabel *promptLable;
+@property (nonatomic,weak)UILabel *promptLabel;
 
 @end
 
@@ -25,9 +25,10 @@
     UILabel *promptLabel = [UILabel new];
     promptLabel.frame = CGRectMake(20, 20, UIScreenWidth-40, 44);
     promptLabel.font = [UIFont systemFontOfSize:14];
+    promptLabel.textColor = [UIColor whiteColor];
     promptLabel.textAlignment = NSTextAlignmentLeft;
     [promptView addSubview:promptLabel];
-    promptView.promptLable = promptLabel;
+    promptView.promptLabel = promptLabel;
     
     UIView* lastView = [[UIApplication sharedApplication].windows lastObject];
     [lastView addSubview:promptView];
@@ -47,8 +48,8 @@
 
 + (void)showError:(NSString*)error{
     PromptView *promptView = [PromptView getPromptView];
-    promptView.promptLable.text = error;
-    promptView.promptLable.backgroundColor = PromptViewBgColor;
+    promptView.promptLabel.text = error;
+    promptView.promptLabel.backgroundColor = PromptViewBgColor;
     promptView.backgroundColor = PromptViewBgColor;
     
     [promptView show:0.5 bloc:^(BOOL finished) {
