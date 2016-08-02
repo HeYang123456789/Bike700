@@ -1,0 +1,34 @@
+//
+//  BikePrefixHeader.pch
+//  Bike700
+//
+//  Created by HEYANG on 16/7/21.
+//  Copyright © 2016年 HeYang. All rights reserved.
+//
+
+
+//-------------------------------------------------------------//
+//       将下面的字段拷贝进Build Settings中的Prefix Header中       //
+//       $(SRCROOT)/$(PROJECT_NAME)/BikePrefixHeader.pch       //
+//-------------------------------------------------------------//
+
+
+#ifndef BikePrefixHeader_pch
+#define BikePrefixHeader_pch
+
+// CommonHeader
+#import "SimpleNSLog.h"
+#import "WxHxD.h"   // 相关的尺寸
+#import "Color.h"
+#import "Category.h"
+#import "URLStrings.h"
+#import "Others.h"  // 其他，包括系统范围
+
+// 第三方库
+#import <Masonry.h>
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
+
+
+
+#endif /* BikePrefixHeader_pch */
