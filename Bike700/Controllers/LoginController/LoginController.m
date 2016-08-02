@@ -66,9 +66,11 @@
             NSDictionary* dataDic = ((NSDictionary*)data)[@"data"];
             if (dataDic && dataDic.count > 0) {
                 // 字典转模型
-                Login *login = [[Login alloc] init];
-                [login setValuesForKeysWithDictionary:dataDic[@"data"]];
+                Login *login = [Login shareLogin];
+                [login setValuesForKeysWithDictionary:dataDic];
+                DLog(@"字典转模型之后：bikeToken:%@",login.bikeToken);
                 [[AppDelegate sharedObject] initMainController];
+                [Login doLogin:dataDic];
             }else{
                 NSString *desc = ((NSDictionary*)data)[@"desc"];
                 DLog(@"desc:%@",desc);

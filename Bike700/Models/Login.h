@@ -10,6 +10,8 @@
 
 @interface Login : NSObject
 
++ (instancetype)shareLogin;
+
 @property (nonatomic,assign)NSInteger process0;
 @property (nonatomic,assign)NSInteger process1;
 @property (nonatomic,assign)NSInteger process2;
@@ -20,10 +22,14 @@
 @property (nonatomic,strong)NSString *photo;
 @property (nonatomic,strong)NSString *bikeToken;
 
-//+ (instancetype)sharedManager;
 + (UIImage*)placeHolderHeadImage;
 + (NSString*)requestLoginPath;
 + (NSDictionary*)requestLoginParames;
-+ (Login*)getLogin;
+
+- (NSString*)getCookieStr;
++ (BOOL) isLogin;
++ (void)doLogin:(NSDictionary *)loginData;
+// 假数据
++ (Login*)getLoginData;
 
 @end

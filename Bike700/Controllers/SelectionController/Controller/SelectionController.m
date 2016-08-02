@@ -12,6 +12,8 @@
 // HY:先直接用AFN，后期重构这个网络单列类
 #import "AFNetworking.h"
 
+#import "Login.h"
+
 
 @interface SelectionController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -63,8 +65,11 @@
     NSURL *url = [NSURL URLWithString:SelectionCellsRequestURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
-    request.HTTPBody = [@"date=2016-8-1&num=5" dataUsingEncoding:NSUTF8StringEncoding];
+    request.HTTPBody = [@"date=2016-8-3&num=5" dataUsingEncoding:NSUTF8StringEncoding];
     
+    NSString* cookie = [[Login shareLogin] getCookieStr];
+    DLog(@"cookie:%@",cookie);
+    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
     
     
     

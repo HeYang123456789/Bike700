@@ -9,6 +9,7 @@
 #import "Bike_NetAPIManager.h"
 
 @implementation Bike_NetAPIManager
+
 + (instancetype)sharedManager {
     static Bike_NetAPIManager *shared_manager = nil;
     static dispatch_once_t pred;
@@ -18,7 +19,6 @@
     });
     return shared_manager;
 }
-
 
 - (void)request_Login_WithPath:(NSString *)path Params:(id)params andBlock:(void (^)(id data, NSError *error))bloc{
     // 创建会话管理者
@@ -31,6 +31,8 @@
         bloc(nil,error);
     }];
 }
+
+
 
 
 @end

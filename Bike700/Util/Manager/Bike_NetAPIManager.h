@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Bike_NetAPIManager : NSObject
+
 + (instancetype)sharedManager;
 
 // 登录请求
