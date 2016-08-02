@@ -21,7 +21,7 @@
 }
 
 #pragma mark - 登录的数据请求
-- (void)request_Login_WithPath:(NSString *)path Params:(id)params andBlock:(void (^)(id data, NSError *error))bloc{
+- (void)request_Login_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc{
     // 创建会话管理者
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -34,7 +34,22 @@
 }
 
 #pragma mark - 精选控制器的数据请求
-
+- (void)request_Selection_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc{
+    // 创建会话管理者
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    // 管理者设置请求序列对象设置添加请求头信息
+    NSString *cookieStr = [[NSUserDefaults standardUserDefaults] objectForKey:kCookie];
+    if (cookieStr) {
+        [manager.requestSerializer setValue:cookieStr forHTTPHeaderField:@"Cookie"];
+    }
+    [manager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DLog(@"\n=======response=======\n%@:\n%@", path, responseObject);
+        bloc(responseObject,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        DLog(@"\n=======error=======\n%@:\n%@", path, error);
+        bloc(nil,error);
+    }];
+}
 
 
 

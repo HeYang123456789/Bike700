@@ -13,6 +13,7 @@
 + (instancetype)sharedManager;
 
 // 登录请求
-- (void)request_Login_WithPath:(NSString *)path Params:(id)params andBlock:(void (^)(id data, NSError *error))block;
+- (void)request_Login_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))block;
+- (void)request_Selection_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc;
 
 @end

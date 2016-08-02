@@ -157,6 +157,7 @@
 		3B804D941D3FE7A300011666 /* Bike700UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bike700UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B804D981D3FE7A300011666 /* Bike700UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bike700UITests.m; sourceTree = "<group>"; };
 		3B804D9A1D3FE7A300011666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B8C49DF1D5152BE0019C61B /* UserDefaultsDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultsDefine.h; sourceTree = "<group>"; };
 		3BB3F1781D45E34700D40B74 /* UIView+AddClickedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AddClickedEvent.h"; sourceTree = "<group>"; };
 		3BB3F1791D45E34700D40B74 /* UIView+AddClickedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AddClickedEvent.m"; sourceTree = "<group>"; };
 		3BC9FBB51D45371A00B08B00 /* SimpleNSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleNSLog.h; sourceTree = "<group>"; };
@@ -580,6 +581,7 @@
 				3BD5A8D61D41375700339200 /* Others.h */,
 				3BD5A8F91D4146BE00339200 /* Category.h */,
 				3BEE98481D4E79F1006C16D0 /* URLStrings.h */,
+				3B8C49DF1D5152BE0019C61B /* UserDefaultsDefine.h */,
 			);
 			path = CommonHeader;
 			sourceTree = "<group>";

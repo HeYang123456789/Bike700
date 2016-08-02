@@ -6,8 +6,7 @@
 //  Copyright © 2016年 HeYang. All rights reserved.
 //
 
-#define kLoginStatus @"login_status"
-#define kCookie @"Cookie"
+
 
 #import "Login.h"
 

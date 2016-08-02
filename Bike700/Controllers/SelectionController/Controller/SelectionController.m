@@ -8,6 +8,7 @@
 
 #import "SelectionController.h"
 #import "SelectionCell.h"
+#import "Bike_NetAPIManager.h"
 
 // HY:先直接用AFN，后期重构这个网络单列类
 #import "AFNetworking.h"
@@ -61,33 +62,57 @@
 }
 
 - (void)refreshData{
-    // 先用原生的NSURLSession SelectionCellsRequestURL
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:SelectionCellsRequestURL];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
-    request.HTTPBody = [@"date=2016-8-3&num=5" dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString* cookie = [[Login shareLogin] getCookieStr];
-    DLog(@"cookie:%@",cookie);
-    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
-    
-    
-    
-    [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        // 解析数据
-        DLog(@"解析数据：%@--%@",response,[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        if (error) {
-            DLog(@"\n error:%@",error);
-            // 如果超时，也需要把这个逻辑实现出来
+    // 直接用网络请求的单例
+    [[Bike_NetAPIManager sharedManager] request_Selection_Path:[SelectionModel requestPath] params:[SelectionModel getParams] andBlock:^(id data, NSError *error) {
+        // 处理字典转模型的业务
+        if (data) {
+            NSDictionary *dict = ((NSDictionary*)data)[@"data"];
+            NSString *hasNext = dict[@"hasNext"];
+            DLog(@"hasNext:%@",hasNext);
+            
+            NSArray *dictDataArr = dict[@"list"];
+            if (dictDataArr && dictDataArr.count>0) {
+                for (NSDictionary *modelDict in dictDataArr) {
+                    SelectionModel* model = [SelectionModel new];
+                    model.date = modelDict[@"date"];
+                    [model setListModelWith:modelDict[@"list"]];
+                    [self.models addObject:model];
+                }
+            }
+        }else{
+            
         }
-        
-        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-        [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            DLog(@"cookies : %@", obj.description);
-        }];
-        
-    }] resume];
+    }];
+    
+    
+    // 原生的NSURLSession SelectionCellsRequestURL
+//    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURL *url = [NSURL URLWithString:SelectionCellsRequestURL];
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//    request.HTTPMethod = @"POST";
+//    request.HTTPBody = [@"date=2016-8-3&num=5" dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    NSString* cookie = [[Login shareLogin] getCookieStr];
+//    DLog(@"cookie:%@",cookie);
+//    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
+//    
+//    
+//    
+//    [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        // 解析数据
+//        DLog(@"解析数据：%@--%@",response,[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+//        if (error) {
+//            DLog(@"\n error:%@",error);
+//            // 如果超时，也需要把这个逻辑实现出来
+//        }
+//        
+//        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+//        [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            DLog(@"cookies : %@", obj.description);
+//        }];
+//        
+//    }] resume];
     
 }
 

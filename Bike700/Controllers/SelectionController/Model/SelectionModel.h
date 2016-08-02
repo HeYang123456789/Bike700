@@ -30,6 +30,11 @@
 @property (nonatomic,strong)NSString *date;
 @property (nonatomic,strong)SelectionModelList *list;
 
+- (void)setListModelWith:(NSDictionary*)modelDict;
+
++ (NSString*)requestPath;
++ (NSDictionary*)getParams;
+
 // 假数据
 + (NSMutableArray*)datas;
 @end
@@ -37,11 +42,11 @@
 
 @interface SelectionModelList : NSObject
 
-@property (nonatomic,strong)NSString *title;
-@property (nonatomic,strong)NSString *pic;
+@property (nonatomic,assign)NSInteger itemId;
 @property (nonatomic,strong)NSString *itemType;
-@property (nonatomic,assign)NSInteger itemiId;
-@property (nonatomic,strong)NSString *tagType;
+@property (nonatomic,strong)NSString *pic;
 @property (nonatomic,strong)NSString *tagName;
+@property (nonatomic,strong)NSString *tagType;
+@property (nonatomic,strong)NSString *title;
 
 @end

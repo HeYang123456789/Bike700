@@ -61,7 +61,7 @@
 
 
 - (void)sendLogin{
-    [[Bike_NetAPIManager sharedManager] request_Login_WithPath:[Login requestLoginPath] Params:[Login requestLoginParames] andBlock:^(id data, NSError *error) {
+    [[Bike_NetAPIManager sharedManager] request_Login_Path:[Login requestLoginPath] params:[Login requestLoginParames] andBlock:^(id data, NSError *error) {
         if (data) {
             NSDictionary* dataDic = ((NSDictionary*)data)[@"data"];
             if (dataDic && dataDic.count > 0) {
