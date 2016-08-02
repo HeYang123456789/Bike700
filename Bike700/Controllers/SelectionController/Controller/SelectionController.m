@@ -38,8 +38,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    _models = [SelectionModel datas];
-    [self.selectionTableView reloadData];
+    // 假数据
+//    _models = [SelectionModel datas];
+//    [self.selectionTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

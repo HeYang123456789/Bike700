@@ -20,6 +20,7 @@
     return shared_manager;
 }
 
+#pragma mark - 登录的数据请求
 - (void)request_Login_WithPath:(NSString *)path Params:(id)params andBlock:(void (^)(id data, NSError *error))bloc{
     // 创建会话管理者
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -31,6 +32,8 @@
         bloc(nil,error);
     }];
 }
+
+#pragma mark - 精选控制器的数据请求
 
 
 

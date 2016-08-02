@@ -76,27 +76,13 @@
 
 + (void)doLogin:(NSDictionary *)loginData{
     
-    // 获取cookie
-    NSString *cookieBikeToken = loginData[@"bikeToken"];
-    DLog(@"cookieBikeToken:%@",cookieBikeToken);
-    NSString *cookieString = [NSString stringWithFormat:@"PassToken=%@;BikeToken=%@",cookieBikeToken,cookieBikeToken];
-    NSData *cookieData = [cookieString dataUsingEncoding:NSUTF8StringEncoding];
-    
-//    NSHTTPCookie *cookieHttp = [NSHTTPCookie alloc] initw
-    
-    
-//    NSHTTPCookieStorage * cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//    [cookieStorage setCookie: cookieData];
-    
-    
-//    [Login saveCookie];
-    
-//    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-//    [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSLog(@"cookies : %@", obj.description);
-//    }];
-    
     if (loginData) {
+        // 获取bikeToken创建cookie，然后存储本地
+        NSString *cookieBikeToken = loginData[@"bikeToken"];
+        NSString *cookieString = [NSString stringWithFormat:@"PassToken=%@;BikeToken=%@",cookieBikeToken,cookieBikeToken];
+        [[NSUserDefaults standardUserDefaults] setObject:cookieString forKey:kCookie];
+    
+        // 存储登录的状态
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[NSNumber numberWithBool:YES] forKey:kLoginStatus];
     }else{
@@ -124,19 +110,12 @@
 
 
 #pragma mark - Cookie
-+ (void)saveCookie{
-    NSData * cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
-    DLog(@"cookiesData:%@",[[NSString alloc] initWithData:cookiesData encoding:NSUTF8StringEncoding] );
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject: cookiesData forKey:kCookie];
-    [defaults synchronize];
++ (NSString*)getCookieStr{
+    NSString *cookieStr = [[NSUserDefaults standardUserDefaults] objectForKey:kCookie];
+    return cookieStr;
 }
 
 
-#pragma mark - 字典转模型的方法
-- (void)setLoginDiction:(NSDictionary*)dic{
-    
-}
 
 #pragma mark - 假数据
 + (Login*)getLoginData{
