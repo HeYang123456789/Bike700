@@ -23,13 +23,13 @@
 - (void)setListModelWith:(NSDictionary*)modelDict{
     DLog(@"modelDict:%@",modelDict);
     // 下面会报错：unrecognized selector sent to instance 0x161016eb0
-//    [self.list setValuesForKeysWithDictionary:modelDict];
-    self.list.itemId = (NSInteger)(modelDict[@"itemId"]);
-    self.list.itemType = modelDict[@"itemType"];
-    self.list.pic = modelDict[@"pic"];
-    self.list.tagName = modelDict[@"tagName"];
-    self.list.tagType = modelDict[@"tagType"];
-    self.list.title = modelDict[@"title"];
+    [self.list setValuesForKeysWithDictionary:modelDict];
+//    self.list.itemId = (NSInteger)(modelDict[@"itemId"]);
+//    self.list.itemType = modelDict[@"itemType"];
+//    self.list.pic = modelDict[@"pic"];
+//    self.list.tagName = modelDict[@"tagName"];
+//    self.list.tagType = modelDict[@"tagType"];
+//    self.list.title = modelDict[@"title"];
     DLog(@"list:%ld-%@-%@-%@-%@-%@",self.list.itemId,self.list.itemType,self.list.pic,self.list.tagName,self.list.tagType,self.list.title);
 }
 

@@ -76,9 +76,10 @@
                 for (NSDictionary *modelDict in dictDataArr) {
                     SelectionModel* model = [SelectionModel new];
                     model.date = modelDict[@"date"];
-                    [model setListModelWith:modelDict[@"list"]];
+                    [model setListModelWith:modelDict[@"list"][0]];
                     [self.models addObject:model];
                 }
+                [self.selectionTableView reloadData];
             }
         }else{
             
