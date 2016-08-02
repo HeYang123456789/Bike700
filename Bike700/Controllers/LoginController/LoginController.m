@@ -9,7 +9,7 @@
 #import "LoginController.h"
 #import "UITextField+Common.h"
 #import "AppDelegate.h"
-
+#import "PromptView.h"
 // 登录控制器肯定需要登录模型
 #import "Login.h"
 
@@ -72,6 +72,7 @@
             }else{
                 NSString *desc = ((NSDictionary*)data)[@"desc"];
                 DLog(@"desc:%@",desc);
+                [PromptView showError:desc];
             }
         }
     }];

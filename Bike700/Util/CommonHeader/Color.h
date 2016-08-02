@@ -20,4 +20,7 @@
 // cell的tagNameLabel的字体颜色
 #define CellTagNameLabelColor [UIColor colorWithRed:0.588 green:0.612 blue:0.627 alpha:1]
 
+
+#define PromptViewBgColor [UIColor colorWithRed:0.906 green:0.306 blue:0.298 alpha:1]
+
 #endif /* Color_h */

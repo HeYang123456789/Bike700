@@ -28,6 +28,7 @@
 		3B480B9B1D5059B20088FFB7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B480B8C1D5059B20088FFB7 /* UIWebView+AFNetworking.m */; };
 		3B480B9E1D5080EE0088FFB7 /* UITextField+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B480B9D1D5080EE0088FFB7 /* UITextField+Common.m */; };
 		3B480BA01D50996F0088FFB7 /* 提示文档.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B480B9F1D50996F0088FFB7 /* 提示文档.txt */; };
+		3B480BA81D50D0470088FFB7 /* PromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B480BA71D50D0470088FFB7 /* PromptView.m */; };
 		3B5635C01D44F42C00FBD835 /* ImageTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5635BF1D44F42C00FBD835 /* ImageTitleCell.m */; };
 		3B5635E91D450CF500FBD835 /* NSString+UIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5635E81D450CF500FBD835 /* NSString+UIUtil.m */; };
 		3B56DD091D4339F100379CBF /* ImageNameSexLocalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B56DD081D4339F100379CBF /* ImageNameSexLocalCell.m */; };
@@ -134,6 +135,8 @@
 		3B480B9C1D5080EE0088FFB7 /* UITextField+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Common.h"; sourceTree = "<group>"; };
 		3B480B9D1D5080EE0088FFB7 /* UITextField+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Common.m"; sourceTree = "<group>"; };
 		3B480B9F1D50996F0088FFB7 /* 提示文档.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "提示文档.txt"; sourceTree = "<group>"; };
+		3B480BA61D50D0470088FFB7 /* PromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptView.h; sourceTree = "<group>"; };
+		3B480BA71D50D0470088FFB7 /* PromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptView.m; sourceTree = "<group>"; };
 		3B5635BE1D44F42C00FBD835 /* ImageTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTitleCell.h; sourceTree = "<group>"; };
 		3B5635BF1D44F42C00FBD835 /* ImageTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTitleCell.m; sourceTree = "<group>"; };
 		3B5635E71D450CF500FBD835 /* NSString+UIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UIUtil.h"; sourceTree = "<group>"; };
@@ -303,6 +306,15 @@
 				3B480B8C1D5059B20088FFB7 /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		3B480BA51D50D0130088FFB7 /* PromptView */ = {
+			isa = PBXGroup;
+			children = (
+				3B480BA61D50D0470088FFB7 /* PromptView.h */,
+				3B480BA71D50D0470088FFB7 /* PromptView.m */,
+			);
+			path = PromptView;
 			sourceTree = "<group>";
 		};
 		3B804D671D3FE7A300011666 = {
@@ -534,6 +546,7 @@
 		3BD5A8861D411BF600339200 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				3B480BA51D50D0130088FFB7 /* PromptView */,
 				3BD07F381D44B77D007FB5A5 /* HYNavBar */,
 			);
 			path = CommonView;
@@ -1040,6 +1053,7 @@
 				3BB3F17A1D45E34700D40B74 /* UIView+AddClickedEvent.m in Sources */,
 				3BD5A88A1D411BF600339200 /* main.m in Sources */,
 				3BD5A8F21D41438700339200 /* MineController.m in Sources */,
+				3B480BA81D50D0470088FFB7 /* PromptView.m in Sources */,
 				3B480B971D5059B20088FFB7 /* UIButton+AFNetworking.m in Sources */,
 				3B5635C01D44F42C00FBD835 /* ImageTitleCell.m in Sources */,
 				3BD07F501D44B77D007FB5A5 /* HYNavBar.m in Sources */,
