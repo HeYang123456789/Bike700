@@ -30,20 +30,23 @@
     self.navBar.backgroundColor = [UIColor whiteColor];
     self.navBar.topItem = navItem;
     
+    
+    self.automaticallyAdjustsScrollViewInsets = false;
     // 添加UITableView
     UITableView *tableView = [UITableView new];
+    tableView.frame = CGRectMake(0, 64, UIScreenWidth, UIScreenHeight-64);
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     self.mineTableView = tableView;
-    [self.mineTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.navBar.mas_bottom);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-    }];
+//    [self.mineTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.navBar.mas_bottom);
+//        make.left.equalTo(self.view);
+//        make.right.equalTo(self.view);
+//        make.bottom.equalTo(self.view);
+//    }];
     tableView.tableHeaderView.backgroundColor = [UIColor clearColor];
 }
 
