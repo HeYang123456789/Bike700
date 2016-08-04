@@ -109,7 +109,7 @@
     CGFloat h = scrollView.height;
     CGFloat contentYOffset = scrollView.contentOffset.y;
     CGFloat distanceFromBottom = scrollView.contentSize.height - contentYOffset;
-    if (distanceFromBottom <= (h+UIScreenHeight)) {
+    if (distanceFromBottom <= (h+UIScreenHeight-200)) {
         if (_isRequestByScrollView == NO) {
             _isRequestByScrollView = YES;
             DLog(@"开始请求数据，并且刷新tableview");
@@ -136,9 +136,11 @@
 //                        DLog(@"没有数据");
 //                    }
                     NSArray *dictDataArr = dict[@"list"];
-                    DLog(@"数组个数：%ld",dictDataArr.count);
-                    if (dictDataArr && dictDataArr.count>0) {
-                        for (NSDictionary *modelDict in dictDataArr) {
+                    NSInteger arrCount = dictDataArr.count;
+                    DLog(@"数组个数：%ld",arrCount);
+                    if (arrCount>0) {
+                        for (int i = 1; i < arrCount; i++) {
+                            NSDictionary *modelDict = dictDataArr[i];
                             SelectionModel* model = [SelectionModel new];
                             model.date = modelDict[@"date"];
                             [model setListModelWith:modelDict[@"list"][0]];
@@ -171,14 +173,14 @@
     // 根据模型设置Cell
     SelectionModel *model = self.models[indexPath.row];
     [cell setCellModel:model];
-//    DLog(@"===创建第%ld行的cell===",indexPath.row);
+    DLog(@"===创建第%ld行的cell===",indexPath.row);
     
     _isRequestByScrollView = NO;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    DLog(@"==返回第%ld行Cell高度==",indexPath.row);
+    DLog(@"==返回第%ld行Cell高度==",indexPath.row);
     return [SelectionCell cellHeight];
 }
 
