@@ -43,7 +43,7 @@
         [manager.requestSerializer setValue:cookieStr forHTTPHeaderField:@"Cookie"];
     }
     [manager POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        DLog(@"\n=======response=======\n%@:\n%@", path, responseObject);
+//        DLog(@"\n=======response=======\n%@:\n%@", path, responseObject);
         bloc(responseObject,nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         DLog(@"\n=======error=======\n%@:\n%@", path, error);

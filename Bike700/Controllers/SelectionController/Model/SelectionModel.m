@@ -21,7 +21,7 @@
 }
 
 - (void)setListModelWith:(NSDictionary*)modelDict{
-    DLog(@"modelDict:%@",modelDict);
+//    DLog(@"modelDict:%@",modelDict);
     // 下面会报错：unrecognized selector sent to instance 0x161016eb0
     [self.list setValuesForKeysWithDictionary:modelDict];
 //    self.list.itemId = (NSInteger)(modelDict[@"itemId"]);
@@ -30,7 +30,7 @@
 //    self.list.tagName = modelDict[@"tagName"];
 //    self.list.tagType = modelDict[@"tagType"];
 //    self.list.title = modelDict[@"title"];
-    DLog(@"list:%ld-%@-%@-%@-%@-%@",self.list.itemId,self.list.itemType,self.list.pic,self.list.tagName,self.list.tagType,self.list.title);
+//    DLog(@"list:%ld-%@-%@-%@-%@-%@",self.list.itemId,self.list.itemType,self.list.pic,self.list.tagName,self.list.tagType,self.list.title);
 }
 
 - (SelectionModelList *)list{
@@ -45,7 +45,7 @@
 }
 + (NSDictionary*)getParams{
     NSDictionary *dict = @{
-                           @"date":@"2016-8-3",
+                           @"date":@"2016-8-5",
                            @"num":@"5"
                            };
     return dict;
