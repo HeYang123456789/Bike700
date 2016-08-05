@@ -57,6 +57,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.rowHeight = [SelectionCell cellHeight];// 对于固定高度的cell，这是很好的优化
     [self.view addSubview:tableView];
     self.selectionTableView = tableView;
     
@@ -77,11 +78,7 @@
         if (data) {
             NSDictionary *dict = ((NSDictionary*)data)[@"data"];
             BOOL hasNext = dict[@"hasNext"];
-//            if (hasNext == 1) {
-//                DLog(@"还有数据");
-//            }else{
-//                DLog(@"没有数据");
-//            }
+            DLog(@"%@数据",(hasNext == 1?@"还有":@"没有"));
             NSArray *dictDataArr = dict[@"list"];
             if (dictDataArr && dictDataArr.count>0) {
                 for (NSDictionary *modelDict in dictDataArr) {
@@ -130,11 +127,7 @@
                 if (data) {
                     NSDictionary *dict = ((NSDictionary*)data)[@"data"];
                     BOOL hasNext = dict[@"hasNext"];
-//                    if (hasNext == 1) {
-//                        DLog(@"还有数据");
-//                    }else{
-//                        DLog(@"没有数据");
-//                    }
+                    DLog(@"%@数据",(hasNext == 1?@"还有":@"没有"));
                     NSArray *dictDataArr = dict[@"list"];
                     NSInteger arrCount = dictDataArr.count;
                     DLog(@"数组个数：%ld",arrCount);
@@ -173,16 +166,16 @@
     // 根据模型设置Cell
     SelectionModel *model = self.models[indexPath.row];
     [cell setCellModel:model];
-    DLog(@"===创建第%ld行的cell===",indexPath.row);
+    DLog(@"===创建第%ld行的cell,日期：%@===",indexPath.row,model.date);
     
     _isRequestByScrollView = NO;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DLog(@"==返回第%ld行Cell高度==",indexPath.row);
-    return [SelectionCell cellHeight];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    DLog(@"==返回第%ld行Cell高度==",indexPath.row);
+//    return [SelectionCell cellHeight];
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

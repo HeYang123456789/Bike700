@@ -59,7 +59,7 @@
     if (section == 0) {
         return 1;
     }if (section == 1) {
-        return 5;
+        return 6;
     }if (section == 2) {
         return 3;
     }
@@ -85,15 +85,18 @@
                 [cell setImage:[UIImage imageNamed:@"me_1qixing"] title:@"骑行历史"];
                 break;
             case 1:
-                [cell setImage:[UIImage imageNamed:@"me_2huodong"] title:@"活动"];
+                [cell setImage:[UIImage imageNamed:@"me_8xunzhang"] title:@"勋章"];
                 break;
             case 2:
-                [cell setImage:[UIImage imageNamed:@"me_4shoucang"] title:@"收藏"];
+                [cell setImage:[UIImage imageNamed:@"me_2huodong"] title:@"活动"];
                 break;
             case 3:
-                [cell setImage:[UIImage imageNamed:@"me_5bike"] title:@"700Bike自行车"];
+                [cell setImage:[UIImage imageNamed:@"me_4shoucang"] title:@"收藏"];
                 break;
             case 4:
+                [cell setImage:[UIImage imageNamed:@"me_5bike"] title:@"700Bike自行车"];
+                break;
+            case 5:
                 [cell setImage:[UIImage imageNamed:@"me_5.1"] title:@"700Bike官方商城"];
                 break;
             default:
