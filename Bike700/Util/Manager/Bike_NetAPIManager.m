@@ -52,7 +52,7 @@
 }
 
 #pragma mark - 活动控制器的数据请求
-- (void)request_Activity_Path:(NSString *)path params:(id)params andBlock:(void (^)(id, NSError *))bloc{
+- (void)request_Activity_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc{
     // 创建会话管理者
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     // 管理者设置请求序列对象设置添加请求头信息

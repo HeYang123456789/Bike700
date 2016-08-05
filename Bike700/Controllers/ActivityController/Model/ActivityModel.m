@@ -10,4 +10,21 @@
 
 @implementation ActivityModel
 
+
+- (void)setListModelWith:(NSDictionary*)modelDict{
+//    DLog(@"modelDict:%@",modelDict);
+    [self setValuesForKeysWithDictionary:modelDict];
+}
++ (NSString*)requestPath{
+    return ActivityCellsRequestURL;
+}
++ (NSDictionary*)getParams{
+    NSDictionary *dict = @{
+                           @"size":@"10",
+                           @"start":@0
+                           };
+    return dict;
+}
+
+
 @end

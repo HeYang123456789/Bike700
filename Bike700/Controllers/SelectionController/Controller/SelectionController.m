@@ -10,8 +10,6 @@
 #import "SelectionCell.h"
 #import "Bike_NetAPIManager.h"
 
-// HY:先直接用AFN，后期重构这个网络单列类
-#import "AFNetworking.h"
 
 #import "Login.h"
 
@@ -55,6 +53,7 @@
 - (void)setUpView{
     // 创建TableView
     UITableView *tableView = [UITableView new];
+//    tableView.frame = self.view.frame;
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -173,10 +172,6 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    DLog(@"==返回第%ld行Cell高度==",indexPath.row);
-//    return [SelectionCell cellHeight];
-//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

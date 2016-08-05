@@ -19,6 +19,6 @@
 - (void)request_Selection_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc;
 
 #pragma mark - 活动模块
-- (void)request_Activity_Path:(NSString *)path params:(id)params andBlock:(void (^)(id, NSError *))bloc;
+- (void)request_Activity_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc;
 
 @end

@@ -69,6 +69,8 @@
     // 设置tabBarItem
     [self setTabBarItems];
     
+    // 默认显示第三个控制器
+    self.selectedIndex = 2;
 }
 
 - (void)addAllChildrenController{

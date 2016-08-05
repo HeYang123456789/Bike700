@@ -16,6 +16,11 @@
 #define TitlePaddingWidth 22
 #define TitleHeight 21
 
+// text上下两边的边距
+#define TitleTopBottomPadding 5
+// text左右两边的边距
+#define TitleLeftRightPadding 10
+
 // 底部阴影的高度
 #define BottomViewHeight 10
 
@@ -24,10 +29,15 @@
 @property (nonatomic,weak)UIImageView *imageBgiew;
 @property (nonatomic,weak)UIView *maskView;
 @property (nonatomic,weak)UILabel *titleLabel;
-@property (nonatomic,weak)UILabel *tagNameLabel;
 
 @property (nonatomic,weak)UIView *textView;
-@property (nonatomic,weak)UILabel *dateLabel;
+
+@property (nonatomic,weak)UILabel *targetAdressTitle;
+@property (nonatomic,weak)UILabel *targetAdressValue;
+@property (nonatomic,weak)UILabel *pricePrizeTitle;
+@property (nonatomic,weak)UILabel *pricePrizeValue;
+@property (nonatomic,weak)UILabel *activityStatusTitle;
+@property (nonatomic,weak)UILabel *activityStatusValue;
 
 @property (nonatomic,weak)UIView *bottomView;
 
@@ -80,24 +90,64 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.imageBgiew addSubview:titleLabel];
     self.titleLabel = titleLabel;
-    //tagNameLabel
-    UILabel *tagNameLabel = [UILabel new];
-    tagNameLabel.textColor=[UIColor whiteColor];
-    tagNameLabel.font=[UIFont systemFontOfSize:11];
-    [self.imageBgiew addSubview:tagNameLabel];
-    self.tagNameLabel = tagNameLabel;
-    
     
     // 文本View
     UIView* textView = [[UIView alloc] initWithFrame:CGRectMake(0, ImageViewBgHeight, UIScreenWidth, TextViewBgHeight)];
     [self addSubview:textView];
     self.textView = textView;
-    // dateLabel
-    UILabel *dateLabel = [UILabel new];
-    dateLabel.textColor = CellTagNameLabelColor;
-    dateLabel.font=[UIFont systemFontOfSize:12];
-    [self.textView addSubview:dateLabel];
-    self.dateLabel = dateLabel;
+    
+    // 下面是6个Label
+    UILabel *targetAdressTitle = [UILabel new];
+    targetAdressTitle.font = [UIFont systemFontOfSize:11];
+    targetAdressTitle.frame = CGRectMake(TitleLeftRightPadding, TitleTopBottomPadding, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
+    targetAdressTitle.textAlignment = NSTextAlignmentCenter;
+    [self.textView addSubview:targetAdressTitle];
+    self.targetAdressTitle = targetAdressTitle;
+    
+    
+    UILabel *pricePrizeTitle = [UILabel new];
+    pricePrizeTitle.font = [UIFont systemFontOfSize:11];
+    pricePrizeTitle.frame = CGRectMake((UIScreenWidth/3)+TitleLeftRightPadding, TitleTopBottomPadding, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
+    pricePrizeTitle.textAlignment = NSTextAlignmentCenter;
+    [self.textView addSubview:pricePrizeTitle];
+    self.pricePrizeTitle = pricePrizeTitle;
+    
+    UILabel *activityStatusTitle = [UILabel new];
+    activityStatusTitle.font = [UIFont systemFontOfSize:11];
+    activityStatusTitle.frame = CGRectMake((UIScreenWidth/3)*2+TitleLeftRightPadding, TitleTopBottomPadding, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
+    activityStatusTitle.textAlignment = NSTextAlignmentCenter;
+    [self.textView addSubview:activityStatusTitle];
+    self.activityStatusTitle = activityStatusTitle;
+    
+    UILabel *targetAdressValue = [UILabel new];
+    targetAdressValue.font = [UIFont systemFontOfSize:11];
+    targetAdressValue.frame = CGRectMake(TitleLeftRightPadding,TextViewBgHeight * 0.5, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
+    targetAdressValue.textAlignment = NSTextAlignmentCenter;
+    [self.textView addSubview:targetAdressValue];
+    self.targetAdressValue = targetAdressValue;
+    
+    UILabel *pricePrizeValue = [UILabel new];
+    pricePrizeValue.font = [UIFont systemFontOfSize:11];
+    pricePrizeValue.frame = CGRectMake((UIScreenWidth/3)+TitleLeftRightPadding, TextViewBgHeight * 0.5, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
+    pricePrizeValue.textAlignment = NSTextAlignmentCenter;
+    [self.textView addSubview:pricePrizeValue];
+    self.pricePrizeValue = pricePrizeValue;
+    
+    UILabel *activityStatusValue = [UILabel new];
+    activityStatusValue.font = [UIFont systemFontOfSize:11];
+    activityStatusValue.frame = CGRectMake((UIScreenWidth/3)*2+TitleLeftRightPadding, TextViewBgHeight * 0.5, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
+    activityStatusValue.textAlignment = NSTextAlignmentCenter;
+    [self.textView addSubview:activityStatusValue];
+    self.activityStatusValue = activityStatusValue;
+    
+    // 测试UI
+    self.targetAdressTitle.text = @"第一个";
+    self.pricePrizeTitle.text = @"第二个";
+    self.activityStatusTitle.text = @"第三个";
+    self.targetAdressValue.text = @"第四个";
+    self.pricePrizeValue.text = @"第五个";
+    self.activityStatusValue.text = @"第六个";
+
     
     // 底部View
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, ImageViewBgHeight+TextViewBgHeight, UIScreenWidth, BottomViewHeight)];
@@ -108,26 +158,21 @@
 
 
 - (void)setCellModel:(ActivityModel*)model{
-//    ActivityModelList *list = model.list;
-//    // 背景图片
-//    [self.imageBgiew requestImageWithURLStr:list.pic];
-//    // title
-//    self.titleLabel.text = list.title;
-//    // tagNameLabel
-//    self.tagNameLabel.text = [NSString stringWithFormat:@"#%@",list.tagName];
-//    // dateLabel
-//    self.dateLabel.text = model.date;
+    // 背景图片
+    [self.imageBgiew requestImageWithURLStr:model.coverPic];
+    // title
+    self.titleLabel.text = model.activityName;
 }
 
 - (void)layoutSubviews{
     // 调整布局
-    [self.tagNameLabel sizeToFit];
-    self.tagNameLabel.center = self.titleLabel.center;
-    self.tagNameLabel.y = (ImageViewBgHeight+TitleHeight)*0.5;
+//    [self.tagNameLabel sizeToFit];
+//    self.tagNameLabel.center = self.titleLabel.center;
+//    self.tagNameLabel.y = (ImageViewBgHeight+TitleHeight)*0.5;
     
-    [self.dateLabel sizeToFit];
-    self.dateLabel.centerX = self.textView.centerX;
-    self.dateLabel.centerY = TextViewBgHeight*0.5;
+//    [self.dateLabel sizeToFit];
+//    self.dateLabel.centerX = self.textView.centerX;
+//    self.dateLabel.centerY = TextViewBgHeight*0.5;
 }
 
 + (CGFloat)cellHeight{

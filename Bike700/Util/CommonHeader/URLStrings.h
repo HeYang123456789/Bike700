@@ -10,5 +10,6 @@
 #define URLStrings_h
 
 #define SelectionCellsRequestURL @"https://appapi.700bike.com/bike/home/v3/data"
+#define ActivityCellsRequestURL @"https://appapi.700bike.com/bike/activity/list"
 
 #endif /* URLStrings_h */
