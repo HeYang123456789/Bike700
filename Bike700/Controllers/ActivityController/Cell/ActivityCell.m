@@ -1,17 +1,16 @@
 //
-//  SelectionCell.m
+//  ActivityCell.m
 //  Bike700
 //
-//  Created by HEYANG on 16/7/22.
+//  Created by HEYANG on 16/8/5.
 //  Copyright © 2016年 HeYang. All rights reserved.
 //
 
-#import "SelectionCell.h"
-
+#import "ActivityCell.h"
 // 图片背景View的高度
 #define ImageViewBgHeight (UIScreenWidth*0.6)
 // 文本View的高度
-#define TextViewBgHeight (UIScreenWidth*0.12)
+#define TextViewBgHeight (UIScreenWidth*0.133)
 
 // title左右两边的边距
 #define TitlePaddingWidth 22
@@ -20,7 +19,7 @@
 // 底部阴影的高度
 #define BottomViewHeight 10
 
-@interface SelectionCell ()
+@interface ActivityCell ()
 
 @property (nonatomic,weak)UIImageView *imageBgiew;
 @property (nonatomic,weak)UIView *maskView;
@@ -31,15 +30,16 @@
 @property (nonatomic,weak)UILabel *dateLabel;
 
 @property (nonatomic,weak)UIView *bottomView;
+
 @end
 
-@implementation SelectionCell
+@implementation ActivityCell
 
 
 + (instancetype)cellWithTableView:(UITableView*)tableView {
-    SelectionCell* cell = [tableView dequeueReusableCellWithIdentifier:SelectionCell_ID];
+    ActivityCell* cell = [tableView dequeueReusableCellWithIdentifier:ActivityCell_ID];
     if (cell == nil) {
-        cell = [[SelectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SelectionCell_ID];
+        cell = [[ActivityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ActivityCell_ID];
     }
     return cell;
 }
@@ -49,7 +49,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.accessoryType = UITableViewCellAccessoryNone;
-        self.selectionStyle=UITableViewCellSelectionStyleNone;
+        self.selectionStyle= UITableViewCellSelectionStyleNone;
         
         [self setUpView ];
     }
@@ -60,7 +60,7 @@
     
     // 图片View
     UIImageView* imageBgiew = [[UIImageView alloc] \
-        initWithFrame:CGRectMake(0, 0, UIScreenWidth, ImageViewBgHeight)];
+                               initWithFrame:CGRectMake(0, 0, UIScreenWidth, ImageViewBgHeight)];
     imageBgiew.backgroundColor = [UIColor whiteColor];
     [self addSubview:imageBgiew];
     self.imageBgiew = imageBgiew;
@@ -107,18 +107,16 @@
 }
 
 
-- (void)setCellModel:(SelectionModel*)model{
-    
-    SelectionModelList *list = model.list;
-    // 背景图片
-    [self.imageBgiew requestImageWithURLStr:list.pic];
-    // title
-    self.titleLabel.text = list.title;
-    // tagNameLabel
-    self.tagNameLabel.text = [NSString stringWithFormat:@"#%@",list.tagName];
-    // dateLabel
-    self.dateLabel.text = model.date;
-    
+- (void)setCellModel:(ActivityModel*)model{
+//    ActivityModelList *list = model.list;
+//    // 背景图片
+//    [self.imageBgiew requestImageWithURLStr:list.pic];
+//    // title
+//    self.titleLabel.text = list.title;
+//    // tagNameLabel
+//    self.tagNameLabel.text = [NSString stringWithFormat:@"#%@",list.tagName];
+//    // dateLabel
+//    self.dateLabel.text = model.date;
 }
 
 - (void)layoutSubviews{
@@ -130,12 +128,10 @@
     [self.dateLabel sizeToFit];
     self.dateLabel.centerX = self.textView.centerX;
     self.dateLabel.centerY = TextViewBgHeight*0.5;
-    
 }
 
 + (CGFloat)cellHeight{
     return (ImageViewBgHeight+TextViewBgHeight+BottomViewHeight);
 }
-
 
 @end

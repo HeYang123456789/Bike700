@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0F84EE1D54C73F0074844B /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F84ED1D54C73F0074844B /* ActivityCell.m */; };
+		3B0F84F41D54C7A50074844B /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F84F31D54C7A50074844B /* ActivityModel.m */; };
 		3B3F600D1D4260A600CE98A5 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F600C1D4260A600CE98A5 /* UIView+Frame.m */; };
 		3B3F60101D4273E500CE98A5 /* Bike_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F600F1D4273E500CE98A5 /* Bike_NetAPIManager.m */; };
 		3B3F60131D4274C500CE98A5 /* BikeNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F60121D4274C500CE98A5 /* BikeNetAPIClient.m */; };
@@ -91,6 +93,10 @@
 
 /* Begin PBXFileReference section */
 		0BD38C49EB3CAAD657071901 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3B0F84EC1D54C73F0074844B /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
+		3B0F84ED1D54C73F0074844B /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		3B0F84F21D54C7A50074844B /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
+		3B0F84F31D54C7A50074844B /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
 		3B3F600B1D4260A600CE98A5 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3B3F600C1D4260A600CE98A5 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		3B3F600E1D4273E500CE98A5 /* Bike_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bike_NetAPIManager.h; sourceTree = "<group>"; };
@@ -600,6 +606,8 @@
 		3BD5A8BF1D41340A00339200 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				3B0F84EC1D54C73F0074844B /* ActivityCell.h */,
+				3B0F84ED1D54C73F0074844B /* ActivityCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -616,6 +624,8 @@
 		3BD5A8C11D41340A00339200 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B0F84F21D54C7A50074844B /* ActivityModel.h */,
+				3B0F84F31D54C7A50074844B /* ActivityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1029,6 +1039,7 @@
 				3B480B901D5059B20088FFB7 /* AFURLRequestSerialization.m in Sources */,
 				3BD07F4A1D44B77D007FB5A5 /* HYBarItem.m in Sources */,
 				3BEE983D1D4CDB9C006C16D0 /* RegisterController.m in Sources */,
+				3B0F84F41D54C7A50074844B /* ActivityModel.m in Sources */,
 				3B3F60161D427B2B00CE98A5 /* EditMineInfoController.m in Sources */,
 				3B480B8F1D5059B20088FFB7 /* AFSecurityPolicy.m in Sources */,
 				3B480B961D5059B20088FFB7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1071,6 +1082,7 @@
 				3BD07F4D1D44B77D007FB5A5 /* HYView.m in Sources */,
 				3B5635E91D450CF500FBD835 /* NSString+UIUtil.m in Sources */,
 				3BEE98381D4CDB6E006C16D0 /* LoginController.m in Sources */,
+				3B0F84EE1D54C73F0074844B /* ActivityCell.m in Sources */,
 				3B56DD0F1D43502A00379CBF /* UIView+Common.m in Sources */,
 				3B480B911D5059B20088FFB7 /* AFURLResponseSerialization.m in Sources */,
 				3B480B981D5059B20088FFB7 /* UIImageView+AFNetworking.m in Sources */,

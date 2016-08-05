@@ -12,8 +12,13 @@
 
 + (instancetype)sharedManager;
 
-// 登录请求
+#pragma mark - 登录注册模块
 - (void)request_Login_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))block;
+
+#pragma mark - 精选模块
 - (void)request_Selection_Path:(NSString *)path params:(id)params andBlock:(void (^)(id data, NSError *error))bloc;
+
+#pragma mark - 活动模块
+- (void)request_Activity_Path:(NSString *)path params:(id)params andBlock:(void (^)(id, NSError *))bloc;
 
 @end
