@@ -16,6 +16,7 @@ PODS:
     - BlocksKit/DynamicDelegate
   - Masonry (0.5.3)
   - MBProgressHUD (0.9)
+  - MJRefresh (3.1.0)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
@@ -24,12 +25,14 @@ DEPENDENCIES:
   - BlocksKit (= 2.2.5)
   - Masonry (= 0.5.3)
   - MBProgressHUD (= 0.9)
+  - MJRefresh (~> 3.1.0)
   - SDWebImage (~> 3.7.6)
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 9f515466afe48632562342a40a1c224071a1a022
   MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
 COCOAPODS: 0.39.0
