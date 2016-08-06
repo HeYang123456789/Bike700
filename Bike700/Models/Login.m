@@ -84,6 +84,7 @@
         // 存储登录的状态
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[NSNumber numberWithBool:YES] forKey:kLoginStatus];
+        
     }else{
         
     }
