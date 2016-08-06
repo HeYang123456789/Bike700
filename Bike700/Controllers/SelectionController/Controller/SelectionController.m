@@ -199,6 +199,10 @@
     return _models;
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)nsurlSessionRequest{
     NSURLSession *session = [NSURLSession sharedSession];
     NSURL *url = [NSURL URLWithString:SelectionCellsRequestURL];
