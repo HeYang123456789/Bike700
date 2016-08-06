@@ -72,10 +72,13 @@
                 
                 // 登录成功获取登录数据之后：1、设置登录相关的逻辑。2、切换控制器
                 [Login doLogin:dataDic complement:^{
-                    [[AppDelegate sharedObject] requestSelectionVCModelList];
-                    [[AppDelegate sharedObject] requestActivityVCModelList];
+                    [[AppDelegate sharedObject] requestSelectionVCModelListComplement:^{
+                        [[AppDelegate sharedObject] initMainController];
+                    }];
+                    [[AppDelegate sharedObject] requestActivityVCModelListComplement:^{
+                        [[AppDelegate sharedObject] initMainController];
+                    }];
                 }];
-                [[AppDelegate sharedObject] initMainController];
             }else{
                 NSString *desc = ((NSDictionary*)data)[@"desc"];
                 DLog(@"desc:%@",desc);

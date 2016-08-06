@@ -21,8 +21,8 @@
 
 + (AppDelegate *)sharedObject;
 
-- (void)requestSelectionVCModelList;
-- (void)requestActivityVCModelList;
+- (void)requestSelectionVCModelListComplement:(void(^)())complment;
+- (void)requestActivityVCModelListComplement:(void(^)())complment;
 
 @end
 

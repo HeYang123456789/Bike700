@@ -19,6 +19,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic,assign)NSInteger runInitMainVCNum;
+
 @end
 
 @implementation AppDelegate
@@ -40,6 +42,8 @@
     // hy:首次启动如果是未登录进入，设置推送消息的角标为0
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
+    
+    _runInitMainVCNum = 0;
     
     return YES;
 }
@@ -82,9 +86,12 @@
 
 #pragma mark - 初始化控制器
 - (void)initMainController{
-    if (_window) {
+    _runInitMainVCNum += 1;
+    DLog(@"调用了%ld次初始化主控制器的方法",_runInitMainVCNum);
+    if (_window && _runInitMainVCNum == 2) {
         MainTabBarController *mainController = [MainTabBarController new];
         self.window.rootViewController = mainController;
+        DLog(@"初始化了主控制器");
     }
 }
 - (void)initLoginController{
@@ -104,7 +111,7 @@
 
 #pragma mark - Others
 // 获取精选控制器的数据请求
-- (void)requestSelectionVCModelList{
+- (void)requestSelectionVCModelListComplement:(void(^)())complment{
     NSMutableArray *models = [NSMutableArray new];
     // 直接用网络请求的单例
     @weakify(self);
@@ -128,11 +135,12 @@
         }else{
             
         }
+        complment();
     }];
 }
 
 // 获取活动控制器的数据请求
-- (void)requestActivityVCModelList{
+- (void)requestActivityVCModelListComplement:(void(^)())complment{
     NSMutableArray *models = [NSMutableArray new];
     // 直接用网络请求的单例
     @weakify(self);
@@ -152,6 +160,7 @@
             }
             self.activityModels = models;
         }
+        complment();
     }];
 
 }

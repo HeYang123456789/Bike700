@@ -12,6 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define SelectionListNum @10
+
 @class SelectionModelList;
 
 @interface SelectionModel : NSObject

@@ -8,6 +8,7 @@
 
 #import "ActivityModel.h"
 
+
 @implementation ActivityModel
 
 
@@ -20,7 +21,7 @@
 }
 + (NSDictionary*)getParams{
     NSDictionary *dict = @{
-                           @"size":@"10",
+                           @"size":ActivityListSize,
                            @"start":@0
                            };
     return dict;

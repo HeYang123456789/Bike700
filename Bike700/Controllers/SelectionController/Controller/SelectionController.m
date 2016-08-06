@@ -28,16 +28,23 @@
 
 @implementation SelectionController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        if ([AppDelegate sharedObject].selectionModels) {
+            self.models = [AppDelegate sharedObject].selectionModels;
+        }else{
+            // 请求数据，然后刷新数据
+            [self refreshData];
+        }
+    }
+    return self;
+}
+
 #pragma mark - 生命周期方法
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if ([AppDelegate sharedObject].selectionModels) {
-        self.models = [AppDelegate sharedObject].selectionModels;
-    }else{
-        // 请求数据，然后刷新数据
-        [self refreshData];
-    }
     
     // 初始化UI
     [self setUpView];
@@ -121,7 +128,7 @@
             
             NSMutableDictionary *paramsDic = [NSMutableDictionary new];
             [paramsDic setValue:modelDate forKey:@"date"];
-            [paramsDic setValue:@5 forKey:@"num"];
+            [paramsDic setValue:SelectionListNum forKey:@"num"];
             
             
             
@@ -160,7 +167,7 @@
 
 #pragma mark - UITableView的代理方法和数据源方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    DLog(@"=要创建%ld个cell的个数=",_models.count);
+//    DLog(@"=要创建%ld个cell的个数=",_models.count);
     if (_models) {
         return _models.count;
     }
@@ -172,7 +179,7 @@
     // 根据模型设置Cell
     SelectionModel *model = self.models[indexPath.row];
     [cell setCellModel:model];
-    DLog(@"===创建第%ld行的cell,日期：%@===",indexPath.row,model.date);
+//    DLog(@"===创建第%ld行的cell,日期：%@===",indexPath.row,model.date);
     
     _isRequestByScrollView = NO;
     return cell;

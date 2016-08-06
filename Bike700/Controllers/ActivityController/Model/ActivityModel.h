@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define ActivityListSize @10
+
 @interface ActivityModel : NSObject
 
 @property (nonatomic,assign)NSInteger activityId;// 活动ID

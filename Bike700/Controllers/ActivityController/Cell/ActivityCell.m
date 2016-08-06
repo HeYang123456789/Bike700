@@ -17,7 +17,7 @@
 #define TitleHeight 21
 
 // text上下两边的边距
-#define TitleTopBottomPadding 5
+#define TitleTopBottomPadding 8
 // text左右两边的边距
 #define TitleLeftRightPadding 10
 
@@ -123,33 +123,33 @@
     self.activityStatusTitle = activityStatusTitle;
     
     UILabel *targetAdressValue = [UILabel new];
-    targetAdressValue.font = [UIFont systemFontOfSize:11];
+    targetAdressValue.font = [UIFont systemFontOfSize:12];
     targetAdressValue.frame = CGRectMake(TitleLeftRightPadding,TextViewBgHeight * 0.5, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
     targetAdressValue.textAlignment = NSTextAlignmentCenter;
     [self.textView addSubview:targetAdressValue];
     self.targetAdressValue = targetAdressValue;
     
     UILabel *pricePrizeValue = [UILabel new];
-    pricePrizeValue.font = [UIFont systemFontOfSize:11];
+    pricePrizeValue.font = [UIFont systemFontOfSize:12];
     pricePrizeValue.frame = CGRectMake((UIScreenWidth/3)+TitleLeftRightPadding, TextViewBgHeight * 0.5, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
     pricePrizeValue.textAlignment = NSTextAlignmentCenter;
     [self.textView addSubview:pricePrizeValue];
     self.pricePrizeValue = pricePrizeValue;
     
     UILabel *activityStatusValue = [UILabel new];
-    activityStatusValue.font = [UIFont systemFontOfSize:11];
+    activityStatusValue.font = [UIFont systemFontOfSize:12];
     activityStatusValue.frame = CGRectMake((UIScreenWidth/3)*2+TitleLeftRightPadding, TextViewBgHeight * 0.5, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
     activityStatusValue.textAlignment = NSTextAlignmentCenter;
     [self.textView addSubview:activityStatusValue];
     self.activityStatusValue = activityStatusValue;
     
     // 测试UI
-    self.targetAdressTitle.text = @"第一个";
-    self.pricePrizeTitle.text = @"第二个";
-    self.activityStatusTitle.text = @"第三个";
-    self.targetAdressValue.text = @"第四个";
-    self.pricePrizeValue.text = @"第五个";
-    self.activityStatusValue.text = @"第六个";
+//    self.targetAdressTitle.text = @"第一个";
+//    self.pricePrizeTitle.text = @"第二个";
+//    self.activityStatusTitle.text = @"第三个";
+//    self.targetAdressValue.text = @"第四个";
+//    self.pricePrizeValue.text = @"第五个";
+//    self.activityStatusValue.text = @"第六个";
 
     
     // 底部View
@@ -165,6 +165,48 @@
     [self.imageBgiew requestImageWithURLStr:model.coverPic];
     // title
     self.titleLabel.text = model.activityName;
+    
+    // 目标和地址
+    if (model.target>0) {
+        // 有目标
+        self.targetAdressTitle.text = @"目标";
+        self.targetAdressValue.text = [NSString stringWithFormat:@"%ld",model.target];
+    }else{
+        self.targetAdressTitle.text = @"地址";
+        self.targetAdressValue.text = model.address;
+    }
+    
+    // 奖励或者费用
+    if (![model.prize isEqualToString:@""]) {
+        self.pricePrizeTitle.text = @"奖励";
+        self.pricePrizeValue.text = model.prize;
+    }else{
+        self.pricePrizeTitle.text = @"费用";
+        self.pricePrizeValue.text = model.price;
+    }
+    
+    // 状态和状态值
+    self.activityStatusTitle.text = @"状态";
+    NSString *statusValue;
+    switch (model.activityStatus) {
+        case 1:
+            statusValue = @"报名进行中";
+            break;
+        case 2:
+            statusValue = @"活动进行中";
+            break;
+        case 3:
+            statusValue = @"活动已结束";
+            break;
+        case 4:
+            statusValue = @"报名已截止";
+            break;
+        default:
+            statusValue = @"活动正安排";
+            break;
+    }
+    self.activityStatusValue.text = statusValue;
+    
 }
 
 - (void)layoutSubviews{

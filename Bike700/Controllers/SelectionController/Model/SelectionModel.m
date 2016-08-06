@@ -29,7 +29,7 @@
 + (NSDictionary*)getParams{
     NSDictionary *dict = @{
                            @"date":@"2016-8-5",
-                           @"num":@"5"
+                           @"num":SelectionListNum
                            };
     return dict;
 }
