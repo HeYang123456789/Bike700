@@ -1,15 +1,15 @@
 
 //
-//  FileCacheManager.m
+//  FileCacheTool.m
 //
 //
 //  Created by HEYANG on 16/6/2.
 //
 //
 
-#import "FileCacheManager.h"
+#import "FileCacheTool.h"
 
-@implementation FileCacheManager
+@implementation FileCacheTool
 + (void)removeDirectoriesPath:(NSString *)directoriesPath complement:(void(^)(void))complement
 {
     // 清空缓存,删除文件

@@ -1,5 +1,5 @@
 //
-//  FileCacheManager.h
+//  FileCacheTool.h
 //  
 //
 //  Created by HEYANG on 16/6/2.
@@ -12,7 +12,7 @@
  *  文件缓存处理工具类
  */
 
-@interface FileCacheManager : NSObject
+@interface FileCacheTool : NSObject
 
 + (void)removeDirectoriesPath:(NSString *)directoriesPath complement:(void(^)(void))complement;
 /**
