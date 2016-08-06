@@ -72,6 +72,7 @@
 		3BEE98431D4CDC30006C16D0 /* IntroductionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE98411D4CDC30006C16D0 /* IntroductionController.xib */; };
 		3BEE98461D4E6136006C16D0 /* UIImageView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE98451D4E6136006C16D0 /* UIImageView+Common.m */; };
 		3BF118601D4EBC3700F6052F /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF1185F1D4EBC3700F6052F /* Login.m */; };
+		3BF212271D55CF2900F0A4BA /* FileCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF212261D55CF2900F0A4BA /* FileCacheManager.m */; };
 		507A7446B8192EAAF83DA922 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A3E74242DC866B63454065 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +234,8 @@
 		3BEE98481D4E79F1006C16D0 /* URLStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLStrings.h; sourceTree = "<group>"; };
 		3BF1185E1D4EBC3700F6052F /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
 		3BF1185F1D4EBC3700F6052F /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
+		3BF212251D55CF2900F0A4BA /* FileCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCacheManager.h; sourceTree = "<group>"; };
+		3BF212261D55CF2900F0A4BA /* FileCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCacheManager.m; sourceTree = "<group>"; };
 		73A3E74242DC866B63454065 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF53095E8207AB91ECFE0843 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -580,6 +583,8 @@
 				3B3F600F1D4273E500CE98A5 /* Bike_NetAPIManager.m */,
 				3B3F60111D4274C500CE98A5 /* BikeNetAPIClient.h */,
 				3B3F60121D4274C500CE98A5 /* BikeNetAPIClient.m */,
+				3BF212251D55CF2900F0A4BA /* FileCacheManager.h */,
+				3BF212261D55CF2900F0A4BA /* FileCacheManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1088,6 +1093,7 @@
 				3BD07F501D44B77D007FB5A5 /* HYNavBar.m in Sources */,
 				3BEE98421D4CDC30006C16D0 /* IntroductionController.m in Sources */,
 				3BF118601D4EBC3700F6052F /* Login.m in Sources */,
+				3BF212271D55CF2900F0A4BA /* FileCacheManager.m in Sources */,
 				3B480B951D5059B20088FFB7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3B3F600D1D4260A600CE98A5 /* UIView+Frame.m in Sources */,
 				3BD5A8D51D4134E900339200 /* SelectionController.m in Sources */,
