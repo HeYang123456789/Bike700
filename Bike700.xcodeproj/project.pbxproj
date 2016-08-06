@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B0F84EE1D54C73F0074844B /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F84ED1D54C73F0074844B /* ActivityCell.m */; };
 		3B0F84F41D54C7A50074844B /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F84F31D54C7A50074844B /* ActivityModel.m */; };
+		3B0F84F91D5589ED0074844B /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F84F71D5589ED0074844B /* EXTScope.m */; };
 		3B3F600D1D4260A600CE98A5 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F600C1D4260A600CE98A5 /* UIView+Frame.m */; };
 		3B3F60101D4273E500CE98A5 /* Bike_NetAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F600F1D4273E500CE98A5 /* Bike_NetAPIManager.m */; };
 		3B3F60131D4274C500CE98A5 /* BikeNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3F60121D4274C500CE98A5 /* BikeNetAPIClient.m */; };
@@ -97,6 +98,9 @@
 		3B0F84ED1D54C73F0074844B /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		3B0F84F21D54C7A50074844B /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
 		3B0F84F31D54C7A50074844B /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
+		3B0F84F61D5589ED0074844B /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		3B0F84F71D5589ED0074844B /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTScope.m; sourceTree = "<group>"; };
+		3B0F84F81D5589ED0074844B /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		3B3F600B1D4260A600CE98A5 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		3B3F600C1D4260A600CE98A5 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		3B3F600E1D4273E500CE98A5 /* Bike_NetAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bike_NetAPIManager.h; sourceTree = "<group>"; };
@@ -259,6 +263,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0F84F51D5589ED0074844B /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				3B0F84F61D5589ED0074844B /* EXTScope.h */,
+				3B0F84F71D5589ED0074844B /* EXTScope.m */,
+				3B0F84F81D5589ED0074844B /* metamacros.h */,
+			);
+			path = extobjc;
+			sourceTree = "<group>";
+		};
 		3B480B691D5059B20088FFB7 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +587,7 @@
 		3BD5A8881D411BF600339200 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3B0F84F51D5589ED0074844B /* extobjc */,
 				3B480B691D5059B20088FFB7 /* AFNetworking */,
 			);
 			path = Vendor;
@@ -1031,6 +1046,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0F84F91D5589ED0074844B /* EXTScope.m in Sources */,
 				3BD5A8891D411BF600339200 /* AppDelegate.m in Sources */,
 				3BD5A8E81D41429600339200 /* RootViewController.m in Sources */,
 				3BD5A8F51D41439500339200 /* RankingController.m in Sources */,

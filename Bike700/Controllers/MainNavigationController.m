@@ -10,7 +10,10 @@
 
 #import "RootViewController.h"
 
-@interface MainNavigationController () <UIGestureRecognizerDelegate>
+@interface MainNavigationController ()
+<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
+
+@property (assign, nonatomic) BOOL isSwitching;
 
 @end
 
@@ -35,6 +38,19 @@
 // 重写下面方法，统一设置返回按钮
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    /**
+     *  参考地址《UIViewController Push & Pop 的那些坑》：
+     *  http://blog.lessfun.com/blog/2015/09/09/uiviewcontroller-push-pop-trap/
+     *  根据这篇，还有很多代码没添加，比如关于pop
+     */
+    if (animated) {
+        if (self.isSwitching) {
+            return; // 1. 如果是动画，并且正在切换，直接忽略
+        }
+        self.isSwitching = YES; // 2. 否则修改状态
+    }
+
+    
     // 只有非根控制器,才需要设置返回按钮
     // 0
     if (self.childViewControllers.count > 0) { // 非根控制器
@@ -57,6 +73,10 @@
     return self.childViewControllers.count > 1;
 }
 
+#pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    self.isSwitching = NO; // 3. 还原状态
+}
 
 
 @end

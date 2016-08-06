@@ -101,6 +101,7 @@
     targetAdressTitle.font = [UIFont systemFontOfSize:11];
     targetAdressTitle.frame = CGRectMake(TitleLeftRightPadding, TitleTopBottomPadding, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
     targetAdressTitle.textAlignment = NSTextAlignmentCenter;
+    targetAdressTitle.textColor = ActivityTitleColor;
     [self.textView addSubview:targetAdressTitle];
     self.targetAdressTitle = targetAdressTitle;
     
@@ -109,6 +110,7 @@
     pricePrizeTitle.font = [UIFont systemFontOfSize:11];
     pricePrizeTitle.frame = CGRectMake((UIScreenWidth/3)+TitleLeftRightPadding, TitleTopBottomPadding, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
     pricePrizeTitle.textAlignment = NSTextAlignmentCenter;
+    pricePrizeTitle.textColor = ActivityTitleColor;
     [self.textView addSubview:pricePrizeTitle];
     self.pricePrizeTitle = pricePrizeTitle;
     
@@ -116,6 +118,7 @@
     activityStatusTitle.font = [UIFont systemFontOfSize:11];
     activityStatusTitle.frame = CGRectMake((UIScreenWidth/3)*2+TitleLeftRightPadding, TitleTopBottomPadding, (UIScreenWidth/3)-2*TitleLeftRightPadding, TextViewBgHeight*0.5-TitleTopBottomPadding);
     activityStatusTitle.textAlignment = NSTextAlignmentCenter;
+    activityStatusTitle.textColor = ActivityTitleColor;
     [self.textView addSubview:activityStatusTitle];
     self.activityStatusTitle = activityStatusTitle;
     

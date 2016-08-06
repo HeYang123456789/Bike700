@@ -52,9 +52,8 @@
     [self.view addSubview:tableView];
     self.activityTableView = tableView;
     
-    __weak ActivityController *weakSelf = self;
     [self.activityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf.view);
+        make.edges.equalTo(self.view);
     }];
     
     _isRequestByScrollView = NO;
@@ -62,8 +61,9 @@
 
 - (void)refreshData{
     // 直接用网络请求的单例
-    __weak ActivityController *weakSelf = self;
+    @weakify(self);
     [[Bike_NetAPIManager sharedManager] request_Activity_Path:[ActivityModel requestPath] params:[ActivityModel getParams] andBlock:^(id data, NSError *error) {
+        @strongify(self);
         if (data) {
             NSDictionary *dataDict = (NSDictionary*)data[@"data"];// 根
             
@@ -73,9 +73,9 @@
                 for (NSDictionary *modelDict in listDict) {
                     ActivityModel *model = [ActivityModel new];
                     [model setListModelWith:modelDict];
-                    [weakSelf.models addObject:model];
+                    [self.models addObject:model];
                 }
-                [weakSelf.activityTableView reloadData];
+                [self.activityTableView reloadData];
             }
         }
     }];

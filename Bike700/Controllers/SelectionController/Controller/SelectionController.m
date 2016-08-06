@@ -61,9 +61,8 @@
     [self.view addSubview:tableView];
     self.selectionTableView = tableView;
     
-    __weak SelectionController *weakSelf = self;
     [self.selectionTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf.view);
+        make.edges.equalTo(self.view);
     }];
     
     _isRequestByScrollView = NO;
@@ -72,8 +71,9 @@
 - (void)refreshData{
     
     // 直接用网络请求的单例
-    __weak SelectionController *weakSelf = self;
+    @weakify(self);
     [[Bike_NetAPIManager sharedManager] request_Selection_Path:[SelectionModel requestPath] params:[SelectionModel getParams] andBlock:^(id data, NSError *error) {
+        @strongify(self);
         // 处理字典转模型的业务
         if (data) {
             NSDictionary *dict = ((NSDictionary*)data)[@"data"];
@@ -85,9 +85,9 @@
                     SelectionModel* model = [SelectionModel new];
                     model.date = modelDict[@"date"];
                     [model setListModelWith:modelDict[@"list"][0]];
-                    [weakSelf.models addObject:model];
+                    [self.models addObject:model];
                 }
-                [weakSelf.selectionTableView reloadData];
+                [self.selectionTableView reloadData];
             }
         }else{
             
@@ -121,8 +121,9 @@
             
             
             // 直接用网络请求的单例
-            __weak SelectionController *weakSelf = self;
+            @weakify(self);
             [[Bike_NetAPIManager sharedManager] request_Selection_Path:[SelectionModel requestPath] params:paramsDic andBlock:^(id data, NSError *error) {
+                @strongify(self);
                 // 处理字典转模型的业务
                 if (data) {
                     NSDictionary *dict = ((NSDictionary*)data)[@"data"];
@@ -137,9 +138,9 @@
                             SelectionModel* model = [SelectionModel new];
                             model.date = modelDict[@"date"];
                             [model setListModelWith:modelDict[@"list"][0]];
-                            [weakSelf.models addObject:model];
+                            [self.models addObject:model];
                         }
-                        [weakSelf.selectionTableView reloadData];
+                        [self.selectionTableView reloadData];
                     }
                 }else{
                     
