@@ -148,7 +148,6 @@
         @strongify(self);
         if (data) {
             NSDictionary *dataDict = (NSDictionary*)data[@"data"];// 根
-            
             // 模型数组(元素都是字典)
             NSArray *listDict = dataDict[@"list"];
             if (listDict.count > 0) {
