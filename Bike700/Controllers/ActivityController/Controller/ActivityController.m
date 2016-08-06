@@ -9,6 +9,7 @@
 #import "ActivityController.h"
 #import "Bike_NetAPIManager.h"
 #import "ActivityCell.h"
+#import "AppDelegate.h"
 
 @interface ActivityController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -27,10 +28,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    if ([AppDelegate sharedObject].activityModels) {
+        self.models = [AppDelegate sharedObject].activityModels;
+    }else{
+        // 请求数据，然后刷新数据
+        [self refreshData];
+    }
+    
     // 初始化UI
     [self setUpView];
-    // 刷新数据
-    [self refreshData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -44,7 +51,6 @@
 - (void)setUpView{
     // 创建TableView
     UITableView *tableView = [UITableView new];
-//    tableView.frame = self.view.frame;
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -75,7 +81,6 @@
                     [model setListModelWith:modelDict];
                     [self.models addObject:model];
                 }
-                [self.activityTableView reloadData];
             }
         }
     }];

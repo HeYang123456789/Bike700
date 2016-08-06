@@ -69,8 +69,13 @@
                 Login *login = [Login shareLogin];
                 [login setValuesForKeysWithDictionary:dataDic];
                 DLog(@"字典转模型之后：bikeToken:%@",login.bikeToken);
+                
+                // 登录成功获取登录数据之后：1、设置登录相关的逻辑。2、切换控制器
+                [Login doLogin:dataDic complement:^{
+                    [[AppDelegate sharedObject] requestSelectionVCModelList];
+                    [[AppDelegate sharedObject] requestActivityVCModelList];
+                }];
                 [[AppDelegate sharedObject] initMainController];
-                [Login doLogin:dataDic];
             }else{
                 NSString *desc = ((NSDictionary*)data)[@"desc"];
                 DLog(@"desc:%@",desc);
@@ -79,6 +84,8 @@
         }
     }];
 }
+
+
 
 //#pragma mark - 使用原生的NSURLSession请求数据
 //#define requestHTTPBody @"appVersion=2.1&countryCode=86&device=iPhone&password=d8578edf8458ce06fbc5bb76a58c5ca4&phone=18720987504&system=ios&systemVersion=9.3.3"

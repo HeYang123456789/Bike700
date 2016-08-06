@@ -28,7 +28,7 @@
 
 - (NSString*)getCookieStr;
 + (BOOL) isLogin;
-+ (void)doLogin:(NSDictionary *)loginData;
++ (void)doLogin:(NSDictionary *)loginData complement:(void(^)())complment;
 + (NSString*)getCookieStr;
 
 // 假数据

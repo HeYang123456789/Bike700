@@ -73,7 +73,7 @@
     return cookieString;
 }
 
-+ (void)doLogin:(NSDictionary *)loginData{
++ (void)doLogin:(NSDictionary *)loginData complement:(void(^)())complment{
     
     if (loginData) {
         // 获取bikeToken创建cookie，然后存储本地
@@ -84,6 +84,10 @@
         // 存储登录的状态
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[NSNumber numberWithBool:YES] forKey:kLoginStatus];
+        
+        if (complment) {
+            complment();
+        }
         
     }else{
         

@@ -54,6 +54,7 @@
 #define GetZeroPointFrameAllInset(frame) GetZeroPointFrameWithWH(frame.size.width,frame.size.height)
 // @brief	以inset填充矩形框.
 #define GetFrameInset(frame,inset) CGRectMake(inset.left, inset.top, frame.size.width - inset.left - inset.right, frame.size.height - inset.top - inset.bottom)
+
 //////////////////////////////////////////////////
 
 

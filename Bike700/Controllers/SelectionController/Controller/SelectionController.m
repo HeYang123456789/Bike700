@@ -10,9 +10,8 @@
 #import "SelectionCell.h"
 #import "Bike_NetAPIManager.h"
 
-
 #import "Login.h"
-
+#import "AppDelegate.h"
 
 
 @interface SelectionController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
@@ -32,10 +31,16 @@
 #pragma mark - 生命周期方法
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([AppDelegate sharedObject].selectionModels) {
+        self.models = [AppDelegate sharedObject].selectionModels;
+    }else{
+        // 请求数据，然后刷新数据
+        [self refreshData];
+    }
+    
     // 初始化UI
     [self setUpView];
-    // 刷新数据
-    [self refreshData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

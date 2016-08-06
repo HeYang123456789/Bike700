@@ -12,13 +12,17 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+// 精选、活动控制器，首次请求的模型数据
+@property (nonatomic,strong)NSMutableArray *selectionModels;
+@property (nonatomic,strong)NSMutableArray *activityModels;
 
 #pragma mark - 初始化控制器
 - (void)initMainController;
 
-
-
 + (AppDelegate *)sharedObject;
+
+- (void)requestSelectionVCModelList;
+- (void)requestActivityVCModelList;
 
 @end
 

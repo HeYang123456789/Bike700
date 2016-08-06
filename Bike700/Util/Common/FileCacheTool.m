@@ -1,10 +1,9 @@
-
 //
 //  FileCacheTool.m
-//
+//  Bike700
 //
 //  Created by HEYANG on 16/6/2.
-//
+//  Copyright © 2016年 HeYang. All rights reserved.
 //
 
 #import "FileCacheTool.h"

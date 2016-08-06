@@ -8,8 +8,14 @@
 
 #import "AppDelegate.h"
 
+#import "SelectionModel.h"
+#import "ActivityModel.h"
+
+#import "Bike_NetAPIManager.h"
+
 #import "MainTabBarController.h"
 #import "LoginController.h"
+
 
 @interface AppDelegate ()
 
@@ -65,6 +71,7 @@
 
 #pragma mark - 推送
 
+
 #pragma mark - 初始化window
 - (void)initWindow{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -89,11 +96,65 @@
     
 }
 
+
 #pragma mark - static
 + (AppDelegate *)sharedObject{
    return (AppDelegate *)([UIApplication sharedApplication].delegate);
 }
 
+#pragma mark - Others
+// 获取精选控制器的数据请求
+- (void)requestSelectionVCModelList{
+    NSMutableArray *models = [NSMutableArray new];
+    // 直接用网络请求的单例
+    @weakify(self);
+    [[Bike_NetAPIManager sharedManager] request_Selection_Path:[SelectionModel requestPath] params:[SelectionModel getParams] andBlock:^(id data, NSError *error) {
+        @strongify(self);
+        // 处理字典转模型的业务
+        if (data) {
+            NSDictionary *dict = ((NSDictionary*)data)[@"data"];
+            BOOL hasNext = dict[@"hasNext"];
+            DLog(@"%@数据",(hasNext == 1?@"还有":@"没有"));
+            NSArray *dictDataArr = dict[@"list"];
+            if (dictDataArr && dictDataArr.count>0) {
+                for (NSDictionary *modelDict in dictDataArr) {
+                    SelectionModel* model = [SelectionModel new];
+                    model.date = modelDict[@"date"];
+                    [model setListModelWith:modelDict[@"list"][0]];
+                    [models addObject:model];
+                }
+            }
+            self.selectionModels = models;
+        }else{
+            
+        }
+    }];
+}
+
+// 获取活动控制器的数据请求
+- (void)requestActivityVCModelList{
+    NSMutableArray *models = [NSMutableArray new];
+    // 直接用网络请求的单例
+    @weakify(self);
+    [[Bike_NetAPIManager sharedManager] request_Activity_Path:[ActivityModel requestPath] params:[ActivityModel getParams] andBlock:^(id data, NSError *error) {
+        @strongify(self);
+        if (data) {
+            NSDictionary *dataDict = (NSDictionary*)data[@"data"];// 根
+            
+            // 模型数组(元素都是字典)
+            NSArray *listDict = dataDict[@"list"];
+            if (listDict.count > 0) {
+                for (NSDictionary *modelDict in listDict) {
+                    ActivityModel *model = [ActivityModel new];
+                    [model setListModelWith:modelDict];
+                    [models addObject:model];
+                }
+            }
+            self.activityModels = models;
+        }
+    }];
+
+}
 
 
 
