@@ -40,8 +40,6 @@
 - (IBAction)loginButton:(UIButton *)sender {
     DLog(@"开始登录");
     [self sendLogin];
-    
-    
 }
 
 - (IBAction)forgetPasswordButton:(UIButton *)sender {
@@ -61,12 +59,14 @@
 
 
 - (void)sendLogin{
+    
+    
     [[Bike_NetAPIManager sharedManager] request_Login_Path:[Login requestLoginPath] params:[Login requestLoginParames] andBlock:^(id data, NSError *error) {
         if (data) {
             NSDictionary* dataDic = ((NSDictionary*)data)[@"data"];
             if (dataDic && dataDic.count > 0) {
                 // 字典转模型
-                Login *login = [Login shareLogin];
+                Login *login = [Login new];
                 [login setValuesForKeysWithDictionary:dataDic];
                 DLog(@"字典转模型之后：bikeToken:%@",login.bikeToken);
                 

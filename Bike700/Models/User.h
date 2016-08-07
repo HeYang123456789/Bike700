@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Login.h"
+
 @class UserTotal,UserInfo;
 
 @interface User : NSObject
@@ -15,18 +17,24 @@
 @property (nonatomic,strong)UserTotal *userTotal;
 @property (nonatomic,strong)UserInfo *userInfo;
 
-// 这个请求的请求字段是：userId	33643
-+ (NSString*)userInfoURLRequestPath;
++ (instancetype)shareUser;
 
++ (UIImage*)placeHolderHeadImage;
+// 这个请求的请求字段是：userId	33643
++ (NSString*)requestUserInfoPath;
++ (NSDictionary*)requestLoginParames;
+
+- (void)setUserTotalDic:(NSDictionary*)dic;
+- (void)setUserInfoDic:(NSDictionary*)dic;
 @end
 
 @interface UserTotal: NSObject
 
-@property (nonatomic,assign)NSInteger folloCount;
 @property (nonatomic,assign)NSInteger distance;
-@property (nonatomic,assign)NSInteger unread;
+@property (nonatomic,assign)NSInteger followCount;
 @property (nonatomic,assign)NSInteger followerCount;
 @property (nonatomic,assign)NSInteger relation;
+@property (nonatomic,assign)NSInteger unread;
 
 @end
 
@@ -51,7 +59,9 @@
 @property (nonatomic,strong)NSString *country;
 @property (nonatomic,assign)NSInteger weixin;
 @property (nonatomic,assign)NSInteger qq;
+@property (nonatomic,assign)NSInteger qqId;
 @property (nonatomic,assign)NSInteger weibo;
+@property (nonatomic,assign)NSInteger weiboId;
 @property (nonatomic,strong)NSString *weixinId;
 @property (nonatomic,strong)NSString *deviceNickname;
 @property (nonatomic,assign)NSInteger renewGSMFee;

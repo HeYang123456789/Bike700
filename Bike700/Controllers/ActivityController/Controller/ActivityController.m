@@ -60,16 +60,17 @@
 - (void)setUpView{
     // 创建TableView
     UITableView *tableView = [UITableView new];
+    tableView.frame = CGRectMake(0, 0, UIScreenWidth, UIScreenHeight-TabbarHeight);
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.rowHeight = [ActivityCell cellHeight];// 对于固定高度的cell，这是很好的优化
     [self.view addSubview:tableView];
     self.activityTableView = tableView;
+    //    [self.activityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.edges.equalTo(self.view);
+    //    }];
     
-    [self.activityTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
     
     _isRequestByScrollView = NO;
 }

@@ -12,6 +12,9 @@
 #import "ImageNameSexLocalCell.h"
 #import "ImageTitleCell.h"
 
+#import "Bike_NetAPIManager.h"
+
+
 @interface MineController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,weak)UITableView *mineTableView;
@@ -20,6 +23,16 @@
 
 @implementation MineController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self requestUpdateUserInfo];
+    }
+    return self;
+}
+
+#pragma mark - ViewController Life Circle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -34,7 +47,7 @@
     self.automaticallyAdjustsScrollViewInsets = false;
     // 添加UITableView
     UITableView *tableView = [UITableView new];
-    tableView.frame = CGRectMake(0, 64, UIScreenWidth, UIScreenHeight-64);
+    tableView.frame = CGRectMake(0, StatusBarAndNavigationBarHeight, UIScreenWidth, UIScreenHeight-StatusBarAndNavigationBarHeight-TabbarHeight);
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.backgroundColor = [UIColor clearColor];
@@ -55,6 +68,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Rqeust Update Date
+- (void)requestUpdateUserInfo{
+    [[Bike_NetAPIManager sharedManager] request_UserInfo_Path:[User requestUserInfoPath] params:[User requestLoginParames] andBlock:^(id data, NSError *error) {
+        if (data) {
+            NSDictionary* dataDic = (NSDictionary*)data[@"data"];
+            
+            [[User shareUser] setUserTotalDic:dataDic[@"total"]];
+            [[User shareUser] setUserInfoDic:dataDic[@"info"]];
+            
+            DLog(@"字典转模型之后:%@==%@",[User shareUser].userTotal,[User shareUser].userInfo);
+            [self.mineTableView reloadData];
+        }else{
+            DLog(@"error%@",error);
+        }
+        
+    }];
+}
+
+
+#pragma mark - UITableView
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
@@ -74,7 +108,8 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             ImageNameSexLocalCell *cell = [ImageNameSexLocalCell cellWithTableView:tableView];
-//            [cell setCellModel:[Login getLogin]];
+            DLog(@"创建cell之前：%@",[User shareUser].userInfo);
+            [cell setCellModel:[User shareUser].userInfo];
             return cell;
         }
     }

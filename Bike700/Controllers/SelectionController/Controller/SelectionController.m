@@ -65,17 +65,17 @@
 - (void)setUpView{
     // 创建TableView
     UITableView *tableView = [UITableView new];
-//    tableView.frame = self.view.frame;
+    tableView.frame = CGRectMake(0, 0, UIScreenWidth, UIScreenHeight-TabbarHeight);
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.rowHeight = [SelectionCell cellHeight];// 对于固定高度的cell，这是很好的优化
     [self.view addSubview:tableView];
     self.selectionTableView = tableView;
+    //    [self.selectionTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.edges.equalTo(self.view);
+    //    }];
     
-    [self.selectionTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
     
     _isRequestByScrollView = NO;
 }
@@ -143,7 +143,7 @@
                     DLog(@"%@数据",(hasNext == 1?@"还有":@"没有"));
                     NSArray *dictDataArr = dict[@"list"];
                     NSInteger arrCount = dictDataArr.count;
-                    DLog(@"数组个数：%ld",arrCount);
+                    DLog(@"数组个数：%ld",(long)arrCount);
                     if (arrCount>0) {
                         for (int i = 1; i < arrCount; i++) {
                             NSDictionary *modelDict = dictDataArr[i];
@@ -210,7 +210,7 @@
     request.HTTPMethod = @"POST";
     request.HTTPBody = [@"date=2016-8-3&num=5" dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSString* cookie = [[Login shareLogin] getCookieStr];
+    NSString* cookie = [Login getCookieStr];
     DLog(@"cookie:%@",cookie);
     [request setValue:cookie forHTTPHeaderField:@"Cookie"];
     

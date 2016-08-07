@@ -12,21 +12,18 @@
 
 @implementation Login
 
-+ (instancetype)shareLogin{
-    static Login *login = nil;
-    static dispatch_once_t pred;
-    dispatch_once(&pred, ^{
-        // hy:后面创建对象的方式需要根据后面实际情况修改
-        login = [[self alloc] init];
-    });
-    return login;
-}
+//+ (instancetype)shareLogin{
+//    static Login *login = nil;
+//    static dispatch_once_t pred;
+//    dispatch_once(&pred, ^{
+//        // hy:后面创建对象的方式需要根据后面实际情况修改
+//        login = [[self alloc] init];
+//    });
+//    return login;
+//}
 
 
-// 头像的占位图
-+ (UIImage*)placeHolderHeadImage{
-    return [UIImage imageNamed:@"login_head"];
-}
+
 
 // 登录模型数据请求的网络路径
 + (NSString*)requestLoginPath{
@@ -64,14 +61,7 @@
     }
 }
 
-- (NSString*)getCookieStr{
-    NSParameterAssert(self.bikeToken);
-    // 获取cookie
-    NSString *cookieBikeToken = self.bikeToken;
-    DLog(@"cookieBikeToken:%@",cookieBikeToken);
-    NSString *cookieString = [NSString stringWithFormat:@"PassToken=%@;BikeToken=%@",cookieBikeToken,cookieBikeToken];
-    return cookieString;
-}
+
 
 + (void)doLogin:(NSDictionary *)loginData complement:(void(^)())complment{
     
@@ -84,6 +74,11 @@
         // 存储登录的状态
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[NSNumber numberWithBool:YES] forKey:kLoginStatus];
+        
+        // UserId本地序列化
+        NSNumber *userID = loginData[@"userId"];
+        DLog(@"userID:%@",userID);
+        [defaults setObject:userID forKey:kUserID];
         
         if (complment) {
             complment();
@@ -113,10 +108,16 @@
 }
 
 
-#pragma mark - Cookie
+#pragma mark - get Date
+// Cookie
 + (NSString*)getCookieStr{
     NSString *cookieStr = [[NSUserDefaults standardUserDefaults] objectForKey:kCookie];
     return cookieStr;
+}
+// userID
++ (NSNumber*)getUserID{
+    NSNumber *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kUserID];
+    return userID;
 }
 
 

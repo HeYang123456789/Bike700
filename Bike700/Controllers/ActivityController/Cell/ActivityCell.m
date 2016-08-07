@@ -170,7 +170,7 @@
     if (model.target>0) {
         // 有目标
         self.targetAdressTitle.text = @"目标";
-        self.targetAdressValue.text = [NSString stringWithFormat:@"%ld",model.target];
+        self.targetAdressValue.text = [NSString stringWithFormat:@"%ld",(long)model.target];
     }else{
         self.targetAdressTitle.text = @"地址";
         self.targetAdressValue.text = model.address;

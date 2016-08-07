@@ -19,6 +19,8 @@
  */
 #define PCTopBarHeight 44.0f
 
+// 阴影View的颜色
+#define HYNacBarShadowBgColor [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1]
 
 #pragma mark - hy: 类别（写了一个方法，但是并没有写类别实现）
 // hy: 相当于声明一个私有方法，现在其实可以不需要的
@@ -85,6 +87,11 @@
         [_topImageView setContentMode:UIViewContentModeScaleAspectFit];
         [_topImageView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:_topImageView];
+        
+        // 阴影的View
+        _shadowView = [UIView new];
+        _shadowView.backgroundColor = HYNacBarShadowBgColor;
+        [self addSubview:_shadowView];
     }
     return self;
 }
@@ -168,6 +175,9 @@
         [_topTitleView setTextColor:self.topItem.titleColor];
         [_topImageView removeFromSuperview];
     }
+    
+    // 设置阴影
+    [_shadowView setFrame:CGRectMake(0, self.height-1, self.width, 1)];
 }
 
 #pragma mark - hy : 根据BarButtonItem来返回导航条上的按钮的尺寸
@@ -274,5 +284,11 @@
     
     [self setNeedsLayout];
 }
+
+
+-(void)setShadowColor:(UIColor*)color{
+    _shadowView.backgroundColor = color;
+}
+
 
 @end

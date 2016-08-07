@@ -28,6 +28,8 @@
     // 只要把系统的返回按钮覆盖,滑动返回功能实现
     // 滑动返回功能 -> 1.手势被干掉 pass 2.代理 -> 根控制器不需要滑动返回
     self.interactivePopGestureRecognizer.delegate = self;
+    
+    self.delegate = self;
 }
 
 
@@ -52,7 +54,6 @@
 
     
     // 只有非根控制器,才需要设置返回按钮
-    // 0
     if (self.childViewControllers.count > 0) { // 非根控制器
         
     }
@@ -77,6 +78,7 @@
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     self.isSwitching = NO; // 3. 还原状态
 }
+
 
 
 @end

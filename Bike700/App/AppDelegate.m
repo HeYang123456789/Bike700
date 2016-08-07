@@ -87,7 +87,7 @@
 #pragma mark - 初始化控制器
 - (void)initMainController{
     _runInitMainVCNum += 1;
-    DLog(@"调用了%ld次初始化主控制器的方法",_runInitMainVCNum);
+    DLog(@"调用了%ld次初始化主控制器的方法",(long)_runInitMainVCNum);
     if (_window && _runInitMainVCNum == 2) {
         MainTabBarController *mainController = [MainTabBarController new];
         self.window.rootViewController = mainController;

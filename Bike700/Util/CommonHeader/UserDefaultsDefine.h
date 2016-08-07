@@ -10,8 +10,9 @@
 #define UserDefaultsDefine_h
 
 // 登录
-#define kLoginStatus @"login_status"
-#define kCookie @"Cookie"
+#define kLoginStatus @"Bike_Login_Status"
+#define kCookie @"Bike_Cookie"
+#define kUserID @"Bike_UserID"
 
 
 #endif /* UserDefaultsDefine_h */

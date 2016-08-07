@@ -18,7 +18,7 @@
 /** 获取cell对象 */
 + (instancetype)cellWithTableView:(UITableView*)tableView;
 /** 设置Cell */
-- (void)setCellModel:(User*)model;
+- (void)setCellModel:(UserInfo*)model;
 /** Cell的高度 */
 + (CGFloat)cellHeight;
 

@@ -21,6 +21,7 @@
     HYBarButtonItem *_rightBarButtonItem;
     HYNavItem *_topItem;
     UIImage *_bgImg;
+    UIView *_shadowView;
     
 @protected
     UIImageView *_bgView;

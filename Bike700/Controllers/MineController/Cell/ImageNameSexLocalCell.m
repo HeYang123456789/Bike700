@@ -70,14 +70,17 @@
 }
 
 /** 设置Cell */
-- (void)setCellModel:(User*)model{
-#warning hy:这里要根据UserInfo修改
-//    [self.avatarImageView sd_setImageWithURL:nil placeholderImage:[User placeHolderHeadImage]];
-//    self.nameLabel.text = model.nickName;
-//    
-//    NSString *str = @"";
-////    [NSString stringWithFormat:@"%@ %@",model.sex,model.city];
-//    self.sexAndLocalLabel.text = str;
+- (void)setCellModel:(UserInfo*)model{
+    
+    if (model) {
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[User placeHolderHeadImage]];
+        
+        self.nameLabel.text = model.nickname;
+        
+        NSString *sexStr = [model.gender isEqualToString:@"M"]?@"男":@"女";
+        NSString *str = [NSString stringWithFormat:@"%@ %@ %@",sexStr,model.province,model.city];
+        self.sexAndLocalLabel.text = str;
+    }
 }
 
 
