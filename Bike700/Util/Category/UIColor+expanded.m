@@ -349,11 +349,17 @@ static NSMutableDictionary *colorNameCache = nil;
 
 #pragma mark Class methods
 
+//+ (UIColor *)randomColor {
+//    return [UIColor colorWithRed:(arc4random()%256)/256.f
+//                           green:(arc4random()%256)/256.f
+//                            blue:(arc4random()%256)/256.f
+//                           alpha:1.0f];
+//}
 + (UIColor *)randomColor {
-    return [UIColor colorWithRed:(arc4random()%256)/256.f
-                           green:(arc4random()%256)/256.f
-                            blue:(arc4random()%256)/256.f
-                           alpha:1.0f];
+    return [UIColor colorWithRed:drand48()
+                           green:drand48()
+                            blue:drand48()
+                           alpha:drand48()];
 }
 
 + (UIColor *)colorWithRGBHex:(UInt32)hex {

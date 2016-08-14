@@ -66,9 +66,12 @@
 + (void)doLogin:(NSDictionary *)loginData complement:(void(^)())complment{
     
     if (loginData) {
+        
         // 获取bikeToken创建cookie，然后存储本地
         NSString *cookieBikeToken = loginData[@"bikeToken"];
+        
         NSString *cookieString = [NSString stringWithFormat:@"PassToken=%@;BikeToken=%@",cookieBikeToken,cookieBikeToken];
+        
         [[NSUserDefaults standardUserDefaults] setObject:cookieString forKey:kCookie];
     
         // 存储登录的状态
